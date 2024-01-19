@@ -59,7 +59,6 @@ if (update.Message is not { } message)
 
     Console.WriteLine($"Received a '{messageText}' message in chat {chatId}.");
 
-    // Echo received message text
     Message sentMessage = await botClient.SendTextMessageAsync(
         chatId: chatId,
         text: "You said:\n" + messageText,

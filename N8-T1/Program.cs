@@ -40,6 +40,7 @@ async Task HandleUpdateAsync(ITelegramBotClient client, Update update, Cancellat
         return;
     }
 
+    var temp = messageText;
     var chatId = message.Chat.Id;
     
     Console.WriteLine("Received a '{messageText}' message in chat {chatId}.");
@@ -52,13 +53,5 @@ async Task HandleUpdateAsync(ITelegramBotClient client, Update update, Cancellat
 
 Task HandlePollingErrorAsync(ITelegramBotClient client, Exception exception, CancellationToken cancellationToken)
 {
-    var ErrorMessage = exception switch
-    {
-        ApiRequestException apiRequestException
-            => $"Telegram Api Error:\n [{apiRequestException.ErrorCode}]\n{apiRequestException.Message}",
-        _ => exception.ToString()
-    };
-    
-    Console.WriteLine(ErrorMessage);
-    return Task.CompletedTask;
+    throw new NotImplementedException();
 }
